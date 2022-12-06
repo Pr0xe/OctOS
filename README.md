@@ -1,5 +1,5 @@
 ## OctOS
-#OctOS is a custom Bootloader with custom Kernel 
+OctOS is a custom Bootloader with custom Kernel 
 
 - Run steps
 1. First run make to create the .bin file
