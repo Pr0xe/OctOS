@@ -9,8 +9,6 @@ times 33 db 0
 start:
 	jmp 0x7c0:step2
 
-
-
 step2:
 	cli ; Clear Interrupts
 	mov ax, 0x7c0
@@ -63,4 +61,3 @@ times 510-($ -$$) db 0
 dw 0xAA55
 
 buffer:
-
