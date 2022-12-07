@@ -1,14 +1,14 @@
 ORG 0x7c00
 BITS 16
+
+CODE_SEG equ gdt_code - gdt_start
+DATA_SEG equ gdt_data - gdt_start
+
 _start:
 	jmp short start
 	nop
 
 times 33 db 0
-
-CODE_SEG equ gdt_code - gdt_start
-DATA_SEG equ gdt_data - gdt_start
-
 
 start:
 	jmp 0:step2
@@ -81,7 +81,7 @@ ata_lba_read:
 	
 	;Send the total sectors to read
 	mov eax, ecx,
-	mov dx, 0x1F6
+	mov dx, 0x1F2
 	out dx, al
 	; Finished sending total sectors to read
 
