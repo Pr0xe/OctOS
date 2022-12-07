@@ -4,7 +4,7 @@ OctOS is a custom Bootloader with custom Kernel
 - Run steps
 1. First run make to create the .bin file
 ```sh
-$ make
+$ ./build.sh
 ```
 2. Then we run it in qemu emulator
 ```sh
