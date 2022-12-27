@@ -70,6 +70,9 @@ void kernel_main()
 	//Initialize the heap
 	kheap_init();
 
+	//Search and initialize disks
+	disk_search_and_init();
+
 	//Initialize interrupt descriptor table
 	idt_init();
 
