@@ -1,2 +1,2 @@
 ## OctOS
-OctOS is a custom Bootloader with custom Kernel 
+OctOS is an under-development custom kernel
