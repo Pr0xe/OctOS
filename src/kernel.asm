@@ -29,9 +29,6 @@ _start:
 	mov al, 00000001b
 	out 0x21, al
 	;End Remap the master PIC
-
-	;Enable interrupts
-	sti
 	 
 	call kernel_main
 
