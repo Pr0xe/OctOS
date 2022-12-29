@@ -9,6 +9,8 @@ typedef unsigned int OCTOS_DISK_TYPE;
 struct disk {
 	OCTOS_DISK_TYPE type;
 	int sector_size;
+
+	struct filesystem *filesystem;
 };
 
 void disk_search_and_init();
