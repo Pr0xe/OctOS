@@ -17,6 +17,17 @@ int strnlen(const char *ptr, int max)
 	}
 	return i;
 }
+char *strcpy(char *s, const char *ct)
+{
+	char *tmp = s;
+
+	while ((*s++ = *ct++) != '\0')
+		/* nothing*/;
+
+	*s = 0x00;
+
+	return tmp;
+}
 
 bool isdigit(char c)
 {
