@@ -88,10 +88,6 @@ void kernel_main()
 	//Enable interrupts
 	enable_interrupts();
 
-	int fd = fopen("0:/test.txt", "r");
-	if (fd) {
-		print("We opened test.txt\n");
-	}
 	while (1) {
 	}
 }
