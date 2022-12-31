@@ -92,7 +92,8 @@ void kernel_main()
 	if (fd) {
 		print("\nWe opened test.txt\n");
 		char buf[16];
-		fread(buf, 15, 1, fd);
+		fseek(fd, 2, SEEK_SET);
+		fread(buf, 12, 1, fd);
 		buf[15] = 0x00;
 		print(buf);
 	}
