@@ -88,6 +88,15 @@ void kernel_main()
 	//Enable interrupts
 	enable_interrupts();
 
+	int fd = fopen("0:/test.txt", "r");
+	if (fd) {
+		print("\nWe opened test.txt\n");
+		char buf[16];
+		fread(buf, 15, 1, fd);
+		buf[15] = 0x00;
+		print(buf);
+	}
+
 	while (1) {
 	}
 }
