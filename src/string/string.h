@@ -8,6 +8,7 @@ int strnlen(const char *ptr, int max);
 bool isdigit(char c);
 int tonumericdigit(char c);
 char *strcpy(char *s, const char *ct);
+char *strncpy(char *s, const char *ct, int n);
 int strncmp(const char *cs, const char *ct, int n);
 int istrncmp(const char *cs, const char *ct, int n);
 int strnlen_terminator(const char *str, int max, char terminator);

@@ -45,6 +45,18 @@ char *strcpy(char *s, const char *ct)
 
 	return tmp;
 }
+char *strncpy(char *s, const char *ct, int n)
+{
+	char *tmp = s;
+
+	while (n) {
+		if ((*tmp = *ct) != 0)
+			ct++;
+		tmp++;
+		n--;
+	}
+	return s;
+}
 
 int istrncmp(const char *cs, const char *ct, int n)
 {
