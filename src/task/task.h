@@ -23,7 +23,6 @@ struct registers {
 };
 
 struct process;
-struct task;
 
 struct task {
 	//The page directory of the task

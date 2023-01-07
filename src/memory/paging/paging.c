@@ -3,8 +3,8 @@
 #include "status.h"
 
 void paging_load_directory(uint32_t *directory);
-static uint32_t *current_directory = 0;
 
+static uint32_t *current_directory = 0;
 struct paging_4gb_chunk *paging_new_4gb(uint8_t flags)
 {
 	uint32_t *directory =
@@ -120,7 +120,7 @@ int paging_map_to(uint32_t *directory, void *virt, void *phys, void *phys_end,
 		res = -EINVARG;
 		goto out;
 	}
-	if ((uint32_t)phys_end <= (uint32_t)phys) {
+	if ((uint32_t)phys_end < (uint32_t)phys) {
 		res = -EINVARG;
 		goto out;
 	}

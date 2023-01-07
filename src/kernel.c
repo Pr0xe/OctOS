@@ -14,6 +14,9 @@
 #include "config.h"
 #include "memory/memory.h"
 #include "task/tss.h"
+#include "task/task.h"
+#include "task/process.h"
+#include "status.h"
 
 uint16_t *video_mem = 0;
 uint16_t terminal_row = 0;
@@ -121,18 +124,12 @@ void kernel_main()
 	//Enable Paging
 	enable_paging();
 
-	//Enable interrupts
-	enable_interrupts();
-
-	int fd = fopen("0:/test.txt", "r");
-	if (fd) {
-		struct file_stat s;
-		fstat(fd, &s);
-		fclose(fd);
-
-		print("\nTesting\n");
+	struct process *process = 0;
+	int res = process_load("0:/blank.bin", &process);
+	if (res != OCTOS_ALL_OK) {
+		panic("Failed to load blank.bin\n");
 	}
-
+	task_run_first_ever_task();
 	while (1) {
 	}
 }

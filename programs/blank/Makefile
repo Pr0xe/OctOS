@@ -4,3 +4,4 @@ all:
 	 -nostdlib -fpic -g ./build/blank.o
 clean:
 	rm -rf ./build/blank.o
+	rm -rf ./blank.bin
