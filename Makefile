@@ -1,7 +1,8 @@
 FILES = ./build/kernel.asm.o ./build/kernel.o ./build/idt/idt.asm.o ./build/idt/idt.o ./build/memory/memory.o ./build/io/io.asm.o \
 ./build/memory/heap/heap.o ./build/memory/heap/kheap.o ./build/memory/paging/paging.o ./build/memory/paging/paging.asm.o \
 ./build/disk/disk.o ./build/string/string.o ./build/fs/pparser.o ./build/disk/streamer.o ./build/fs/file.o ./build/fs/fat/fat16.o \
-./build/gdt/gdt.o ./build/gdt/gdt.asm.o ./build/task/tss.asm.o ./build/task/task.o ./build/task/process.o ./build/task/task.asm.o
+./build/gdt/gdt.o ./build/gdt/gdt.asm.o ./build/task/tss.asm.o ./build/task/task.o ./build/task/process.o ./build/task/task.asm.o \
+./build/isr80h/isr80h.o ./build/isr80h/misc.o
 
 INCLUDES = -I./src
 FLAGS= -g -ffreestanding -falign-jumps -falign-functions -falign-labels -falign-loops -fstrength-reduce -fomit-frame-pointer \
@@ -91,6 +92,12 @@ all: ./bin/boot.bin ./bin/kernel.bin user_programs
 
 ./build/task/task.asm.o: ./src/task/task.asm
 	nasm -f elf -g ./src/task/task.asm -o ./build/task/task.asm.o
+
+./build/isr80h/isr80h.o: ./src/isr80h/isr80h.c
+	i686-elf-gcc $(INCLUDES) -I./src/isr80h $(FLAGS) -std=gnu99 -c ./src/isr80h/isr80h.c -o ./build/isr80h/isr80h.o
+
+./build/isr80h/misc.o: ./src/isr80h/misc.c
+	i686-elf-gcc $(INCLUDES) -I./src/isr80h $(FLAGS) -std=gnu99 -c ./src/isr80h/misc.c -o ./build/isr80h/misc.o
 
 user_programs:
 	cd ./programs/blank && $(MAKE) all
