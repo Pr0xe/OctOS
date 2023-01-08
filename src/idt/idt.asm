@@ -65,9 +65,9 @@ isr80h_wrapper:
         ;restore  general purpose registers for userland
         popad
         mov eax, [tmp_res]
-        no_interrupt_handler
+        iretd
         
 section .data
 ;we store the return result from isr80h_handler
-tmp_res:
+tmp_res: 
         dd 0
