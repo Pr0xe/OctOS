@@ -3,9 +3,8 @@
 
 #include <stdint.h>
 #include "config.h"
-#include "kernel.h"
 #include "task/task.h"
-
+#include "config.h"
 struct process {
 	//process ID
 	uint16_t id;

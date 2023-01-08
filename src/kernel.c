@@ -108,7 +108,7 @@ void kernel_main()
 
 	//Setup the TSS
 	memset(&tss, 0x00, sizeof(tss));
-	tss.esp = 0x600000;
+	tss.esp0 = 0x600000;
 	tss.ss0 = KERNEL_DATA_SELECTOR;
 
 	//load the TSS
@@ -119,7 +119,7 @@ void kernel_main()
 				      PAGING_ACCESS_FROM_ALL);
 
 	//Switch to kernel paging chunk
-	paging_switch(paging_4gb_chunk_get_directory(kernel_chunk));
+	paging_switch(kernel_chunk);
 
 	//Enable Paging
 	enable_paging();
@@ -127,9 +127,10 @@ void kernel_main()
 	struct process *process = 0;
 	int res = process_load("0:/blank.bin", &process);
 	if (res != OCTOS_ALL_OK) {
-		panic("Failed to load blank.bin\n");
+		panic("\nFailed to load blank.bin\n");
 	}
 	task_run_first_ever_task();
+
 	while (1) {
 	}
 }
