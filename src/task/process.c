@@ -55,7 +55,6 @@ static int process_load_binary(const char *filename, struct process *process)
 	}
 
 	if (fread(program_data_ptr, stat.filesize, 1, fd) != 1) {
-		print("SKATAAAAAAa");
 		res = -EIO;
 		goto out;
 	}

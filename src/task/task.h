@@ -6,6 +6,7 @@
 
 #include <stdint.h>
 
+struct interrupt_frame;
 struct registers {
 	uint32_t edi;
 	uint32_t esi;
@@ -50,5 +51,6 @@ void task_run_first_ever_task();
 void task_return(struct registers *regs);
 void restore_general_purpose_registers(struct registers *regs);
 void user_registers();
+void task_current_save_state(struct interrupt_frame *frame);
 
 #endif
