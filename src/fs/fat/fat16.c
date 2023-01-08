@@ -9,10 +9,10 @@
 #include "config.h"
 #include <stdint.h>
 
-#define PEACHOS_FAT16_SIGNATURE 0x29
-#define PEACHOS_FAT16_FAT_ENTRY_SIZE 0x02
-#define PEACHOS_FAT16_BAD_SECTOR 0xFF7
-#define PEACHOS_FAT16_UNUSED 0x00
+#define OCTOS_FAT16_SIGNATURE 0x29
+#define OCTOS_FAT16_FAT_ENTRY_SIZE 0x02
+#define OCTOS_FAT16_BAD_SECTOR 0xFF7
+#define OCTOS_FAT16_UNUSED 0x00
 
 typedef unsigned int FAT_ITEM_TYPE;
 #define FAT_ITEM_TYPE_DIRECTORY 0
@@ -348,9 +348,9 @@ static int fat16_get_fat_entry(struct disk *disk, int cluster)
 
 	uint32_t fat_table_position =
 		fat16_get_first_fat_sector(private) * disk->sector_size;
-	res = diskstreamer_seek(
-		stream,
-		fat_table_position * (cluster * PEACHOS_FAT16_FAT_ENTRY_SIZE));
+	res = diskstreamer_seek(stream,
+				fat_table_position *
+					(cluster * OCTOS_FAT16_FAT_ENTRY_SIZE));
 	if (res < 0) {
 		goto out;
 	}
@@ -387,7 +387,7 @@ static int fat16_get_cluster_for_offset(struct disk *disk, int starting_cluster,
 		}
 
 		// Sector is marked as bad?
-		if (entry == PEACHOS_FAT16_BAD_SECTOR) {
+		if (entry == OCTOS_FAT16_BAD_SECTOR) {
 			res = -EIO;
 			goto out;
 		}
