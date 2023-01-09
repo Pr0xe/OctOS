@@ -94,7 +94,6 @@ struct gdt_structured gdt_structured[OCTOS_TOTAL_GDT_SEGMENTS] = {
 void kernel_main()
 {
 	terminal_init();
-	print("Hello People\nand computers");
 
 	memset(gdt_real, 0x00, sizeof(gdt_real));
 	gdt_structured_to_gdt(gdt_real, gdt_structured,
