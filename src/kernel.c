@@ -91,7 +91,10 @@ struct gdt_structured gdt_structured[OCTOS_TOTAL_GDT_SEGMENTS] = {
 	{ .base = 0x00, .limit = 0xffffffff, .type = 0xF2 }, // User Dataseg
 	{ .base = (uint32_t)&tss, .limit = sizeof(tss), .type = 0xE9 } //TSS seg
 };
-
+void pic_timer_callback(struct interrupt_frame *frame)
+{
+	print("Timer activated\n");
+}
 void kernel_main()
 {
 	terminal_init();
@@ -137,6 +140,9 @@ void kernel_main()
 
 	//Init system keyboard
 	keyboard_init();
+
+	idt_register_interrupt_callback(0x20, pic_timer_callback);
+
 	struct process *process = 0;
 	int res = process_load("0:/blank.bin", &process);
 	if (res != OCTOS_ALL_OK) {
