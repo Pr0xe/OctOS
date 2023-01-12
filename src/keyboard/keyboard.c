@@ -53,6 +53,10 @@ void keyboard_push(char c)
 		return;
 	}
 
+	if (c == 0) {
+		return;
+	}
+
 	int real_index = keyboard_get_tail_index(process);
 	process->keyboard.buffer[real_index] = c;
 	process->keyboard.tail++;
@@ -70,6 +74,7 @@ char keyboard_pop()
 		process->keyboard.head % sizeof(process->keyboard.buffer);
 	char c = process->keyboard.buffer[real_index];
 	if (c == 0x00) {
+		//Nothing to pop return 0
 		return 0;
 	}
 
