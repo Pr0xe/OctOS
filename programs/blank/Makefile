@@ -3,4 +3,4 @@ all:
 	i686-elf-gcc -g -T ./linker.ld -o ./blank.elf -ffreestanding -O0 -nostdlib -fpic -g ./build/blank.o
 clean:
 	rm -rf ./build/blank.o
-	rm -rf ./blank.bin
+	rm -rf ./blank.elf
