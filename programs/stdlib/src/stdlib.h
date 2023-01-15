@@ -1,5 +1,5 @@
-#ifndef STDLIB_H
-#define STDLIB_H
+#ifndef OCTOS_STDLIB_H
+#define OCTOS_STDLIB_H
 
 #include <stddef.h>
 

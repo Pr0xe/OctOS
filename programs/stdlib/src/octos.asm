@@ -4,6 +4,7 @@ section .asm
 
 global print:function
 global getkey:function
+global octos_putchar:function
 global octos_malloc:function
 global octos_free:function
 
@@ -26,6 +27,17 @@ getkey:
         mov eax, 2; command getkey
         int 0x80
 
+        pop ebp
+        ret
+
+;void octos_putchar(char c)
+octos_putchar:
+        push ebp
+        mov ebp, esp
+        mov eax, 3;putchar command
+        push dword [ebp+8] ; variable "c"
+        int 0x80
+        add esp, 4
         pop ebp
         ret
 
