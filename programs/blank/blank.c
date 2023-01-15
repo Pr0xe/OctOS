@@ -1,8 +1,13 @@
 #include "octos.h"
+#include "stdlib.h"
 
 int main(int argc, char **argv)
 {
 	print("Hello this is test\n");
+
+	void *ptr = malloc(512);
+	if (ptr) {
+	}
 	while (1) {
 		if (getkey() != 0) {
 			print("key was pressed\n");

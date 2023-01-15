@@ -2,6 +2,8 @@
 
 global print:function
 global getkey:function
+global octos_malloc:function
+
 ;void print(const char *filename)
 print:
         push ebp
@@ -21,5 +23,16 @@ getkey:
         mov eax, 2; command getkey
         int 0x80
 
+        pop ebp
+        ret
+
+;void* octos_malloc(size_t size)
+octos_malloc:
+        push ebp
+        mov ebp, esp
+        mov eax, 4; command malloc
+        push dword[ebp+8]; Variable "size"
+        int 0x80
+        add esp, 4
         pop ebp
         ret

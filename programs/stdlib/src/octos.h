@@ -1,7 +1,11 @@
 #ifndef OCTOS_H
 #define OCTOS_H
 
+#include <stddef.h>
+
 void print(const char *filename);
 int getkey();
+
+void *octos_malloc(size_t size);
 
 #endif

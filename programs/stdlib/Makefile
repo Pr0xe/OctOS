@@ -1,6 +1,6 @@
-FILES = ./build/start.o ./build/octos.o
-INCLUDES=
-
+FILES = ./build/start.o ./build/octos.o ./build/stdlib.o
+INCLUDES=-I./src
+FLAGS= -g
 all: ${FILES}
 	i686-elf-ld -m elf_i386 -relocatable ${FILES} -o ./stdlib.elf
 
@@ -9,6 +9,9 @@ all: ${FILES}
 
 ./build/octos.o: ./src/octos.asm
 	nasm -f elf ./src/octos.asm -o ./build/octos.o
+
+./build/stdlib.o: ./src/stdlib.c
+	i686-elf-gcc ${INCLUDES} $(FLAGS) -std=gnu99 -c ./src/stdlib.c -o ./build/stdlib.o
 
 clean:
 	rm -rf ${FILES}
