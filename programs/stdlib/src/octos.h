@@ -7,5 +7,6 @@ void print(const char *filename);
 int getkey();
 
 void *octos_malloc(size_t size);
+void octos_free(void *ptr);
 
 #endif

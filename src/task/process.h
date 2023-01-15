@@ -5,6 +5,7 @@
 #include "config.h"
 #include "task/task.h"
 #include "config.h"
+#include <stdbool.h>
 
 #define PROCESS_FILETYPE_ELF 0
 #define PROCESS_FILETYPE_BINARY 1
@@ -47,5 +48,6 @@ struct process *process_current();
 struct process *process_get(int process_id);
 int process_load_switch(const char *filename, struct process **process);
 void *process_malloc(struct process *process, size_t size);
+void process_free(struct process *process, void *ptr);
 
 #endif
