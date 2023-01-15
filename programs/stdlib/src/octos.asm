@@ -3,7 +3,7 @@
 section .asm
 
 global print:function
-global getkey:function
+global octos_getkey:function
 global octos_putchar:function
 global octos_malloc:function
 global octos_free:function
@@ -20,13 +20,12 @@ print:
         pop ebp
         ret
 
-;int getkey()
-getkey:
+;int octos_getkey()
+octos_getkey:
         push ebp
         mov ebp, esp
         mov eax, 2; command getkey
         int 0x80
-
         pop ebp
         ret
 
