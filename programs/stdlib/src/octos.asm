@@ -7,6 +7,7 @@ global octos_getkey:function
 global octos_putchar:function
 global octos_malloc:function
 global octos_free:function
+global octos_process_load_start:function
 
 ;void print(const char *filename)
 print:
@@ -57,6 +58,17 @@ octos_free:
         mov ebp, esp
         mov eax, 5 ; free command
         push dword[ebp+8] ; variable ptr
+        int 0x80
+        add esp, 4
+        pop ebp
+        ret
+
+;void octos_process_load_start(const char* filename)
+octos_process_load_start:
+        push ebp
+        mov ebp, esp
+        mov eax, 6 ;command 6 process load start
+        push dword[ebp+8] ; variable filename
         int 0x80
         add esp, 4
         pop ebp
