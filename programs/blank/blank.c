@@ -1,10 +1,16 @@
 #include "octos.h"
 #include "stdlib.h"
 #include "stdio.h"
+#include "string.h"
 
 int main(int argc, char **argv)
 {
-	printf("My age is %i\n", 23);
+	char words[] = "Hello im alex papadov";
+	const char *token = strtok(words, " ");
+	while (token) {
+		printf("%s\n", token);
+		token = strtok(NULL, " ");
+	}
 
 	while (1) {
 	}
