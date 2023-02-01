@@ -12,6 +12,11 @@
 
 typedef unsigned char PROCESS_FILETYPE;
 
+struct process_allocation {
+	void *ptr;
+	size_t size;
+};
+
 struct process {
 	//process ID
 	uint16_t id;
@@ -20,8 +25,9 @@ struct process {
 
 	//The main process task
 	struct task *task;
+
 	//The memory allocations of the process
-	void *allocations[OCTOS_MAX_PROGRAM_ALLOCATIONS];
+	struct process_allocation allocations[OCTOS_MAX_PROGRAM_ALLOCATIONS];
 
 	PROCESS_FILETYPE filetype;
 	union {
