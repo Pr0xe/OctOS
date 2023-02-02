@@ -25,5 +25,7 @@ void octos_terminal_readline(char *out, int max, bool output_while_typing);
 void octos_process_load_start(const char *filename);
 struct command_argument *octos_parse_command(const char *command, int max);
 void octos_process_get_arguments(struct process_arguments *arguments);
+int octos_system(struct command_argument *arguments);
+int octos_system_run(const char *command);
 
 #endif

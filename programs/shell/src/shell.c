@@ -10,7 +10,8 @@ int main(int argc, char **argv)
 		print("->");
 		char buf[1024];
 		octos_terminal_readline(buf, sizeof(buf), true);
-		octos_process_load_start(buf);
+		print("\n");
+		octos_system_run(buf);
 		print("\n");
 	}
 	return 0;
