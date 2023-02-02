@@ -5,10 +5,7 @@
 
 int main(int argc, char **argv)
 {
-	struct process_arguments arguments;
-	octos_process_get_arguments(&arguments);
-
-	main(arguments.argc, arguments.argv);
+	print(argv[0]);
 	while (1) {
 	}
 	return 0;
