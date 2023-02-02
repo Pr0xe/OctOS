@@ -9,6 +9,11 @@ struct command_argument {
 	struct command_argument *next;
 };
 
+struct process_arguments {
+	int argc;
+	char **argv;
+};
+
 void print(const char *filename);
 int octos_getkey();
 
@@ -19,4 +24,6 @@ int octos_getkeyblock();
 void octos_terminal_readline(char *out, int max, bool output_while_typing);
 void octos_process_load_start(const char *filename);
 struct command_argument *octos_parse_command(const char *command, int max);
+void octos_process_get_arguments(struct process_arguments *arguments);
+
 #endif

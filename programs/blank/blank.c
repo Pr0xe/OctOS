@@ -5,12 +5,10 @@
 
 int main(int argc, char **argv)
 {
-	char str[] = "Hello Alex";
-	struct command_argument *root_command =
-		octos_parse_command(str, sizeof(str));
-	printf("%s\n", root_command->argument);
-	printf("%s\n", root_command->next->argument);
+	struct process_arguments arguments;
+	octos_process_get_arguments(&arguments);
 
+	main(arguments.argc, arguments.argv);
 	while (1) {
 	}
 	return 0;

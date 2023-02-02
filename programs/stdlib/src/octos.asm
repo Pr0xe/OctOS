@@ -8,6 +8,7 @@ global octos_putchar:function
 global octos_malloc:function
 global octos_free:function
 global octos_process_load_start:function
+global octos_process_get_arguments:function
 
 ;void print(const char *filename)
 print:
@@ -69,6 +70,17 @@ octos_process_load_start:
         mov ebp, esp
         mov eax, 6 ;command 6 process load start
         push dword[ebp+8] ; variable filename
+        int 0x80
+        add esp, 4
+        pop ebp
+        ret
+
+;void octos_process_get_arguments(struct process_arguments* arguments)
+octos_process_get_arguments:
+        push ebp
+        mov ebp, esp
+        mov eax, 8 ; Command 8 get the process argument
+        push dword[ebp+8] ; variable argument
         int 0x80
         add esp, 4
         pop ebp
