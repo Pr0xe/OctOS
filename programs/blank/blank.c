@@ -5,13 +5,11 @@
 
 int main(int argc, char **argv)
 {
-	char *ptr = malloc(20);
-	strcpy(ptr, "Hello world");
-	print(ptr);
-	free(ptr);
-
-	ptr[0] = 'B';
-	print("abc\n");
+	char str[] = "Hello Alex";
+	struct command_argument *root_command =
+		octos_parse_command(str, sizeof(str));
+	printf("%s\n", root_command->argument);
+	printf("%s\n", root_command->next->argument);
 
 	while (1) {
 	}
