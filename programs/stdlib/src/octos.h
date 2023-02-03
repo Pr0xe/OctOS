@@ -27,5 +27,5 @@ struct command_argument *octos_parse_command(const char *command, int max);
 void octos_process_get_arguments(struct process_arguments *arguments);
 int octos_system(struct command_argument *arguments);
 int octos_system_run(const char *command);
-
+void octos_exit();
 #endif
